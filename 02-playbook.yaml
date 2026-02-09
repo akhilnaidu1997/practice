@@ -1,0 +1,13 @@
+- name: install nginx
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: nginx
+    ansible.builtin.package:
+    - name: nginx
+      state: latest 
+  - name: start service
+    ansible.builtin.service:
+    - name: nginx
+      state: started 
+      enabled: yes
