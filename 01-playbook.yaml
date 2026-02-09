@@ -1,5 +1,5 @@
 - name: ping server
-  hosts:
+  hosts: catalogue
   become: yes
   tasks:
   - name: ping server
