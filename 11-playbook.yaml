@@ -1,0 +1,9 @@
+- name: use Conditions
+  hosts: local
+  connection: local
+  tasks:
+  - name: using Conditions
+    ansible.builtin.package:
+      name: nginx
+      state: latest
+    when: ansible_os_family == "RedHat"
