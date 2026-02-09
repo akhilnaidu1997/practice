@@ -1,6 +1,7 @@
 - name: use Conditions
   hosts: local
   connection: local
+  become: yes
   tasks:
   - name: using Conditions
     ansible.builtin.package:
