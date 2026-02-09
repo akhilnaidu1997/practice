@@ -1,0 +1,7 @@
+- name: variables passing through cmd
+  hosts: local
+  connection: local
+  tasks:
+  - name: passing through cmd
+    ansible.builtin.debug:
+      msg: "course name is {{ COURSE }}, Duration: {{ Duration }}, Trainer:{{ Trainer}}"
