@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    number: "5"
+    number: 5
   tasks:
   - name: using Conditions
     ansible.builtin.debug:
