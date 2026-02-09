@@ -1,0 +1,15 @@
+- name: datatypes in ansible
+  hosts: local
+  connection: local
+  vars:
+    COURSE: DevSecOps
+    Duration: "120"
+    is_live: True
+    Tools:
+    - linux
+    - shell 
+    - ansible
+    - terraform
+    Content:
+    cloud: aws 
+    cm: ansible
