@@ -8,7 +8,6 @@
 
   - name: Password
     prompt: Enter your Password
-    private: true
 
   tasks:
   - name: variables in prompt
