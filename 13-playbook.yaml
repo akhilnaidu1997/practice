@@ -6,7 +6,7 @@
   - name: use loops here
     ansible.builtin.debug:
       msg: "Hello {{ item }}"
-    loops:
+    loop:
     - suresh 
     - ramesh 
     - john 
