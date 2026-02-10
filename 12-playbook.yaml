@@ -1,0 +1,16 @@
+- name: install based on os family 
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: install if redhat 
+    ansible.builtin.package:
+      name: nginx
+      state: latest
+    when: ansible_os_family == "RedHat"
+
+  - name: install if ubuntu
+    ansible.builtin.package:
+      name: nginx
+      state: latest
+    when: ansible_os_family == "Ubuntu"
