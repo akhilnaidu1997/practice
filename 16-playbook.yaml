@@ -1,0 +1,9 @@
+- name: filters # functions are nothing but filters in ansible
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: default variable
+    ansible.builtin.debug:
+      msg: "Hello, {{ name | default(Ramesh) }}"
+
