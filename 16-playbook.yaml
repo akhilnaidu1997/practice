@@ -43,3 +43,7 @@
       content: " {{ app_output | to_nice_json }}"
       dest: ./newapp.json
 
+  - name: convert to uppercase
+    ansible.builtin.debug:
+      msg: "{{ Tech | uppercase }}"
+
