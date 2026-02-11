@@ -1,0 +1,46 @@
+- name: create ec2instance and r53
+  hosts: local
+  connection: local
+  vars: 
+    ami_id: ami-0220d79f3f480ecf5
+    sg_id: sg-084659653bcf2b298
+    zone_id: Z06190873R7XMZC2PKDSV
+    domain: daws86s-akhil.shop
+    instance:
+    - mongodb
+  tasks:
+  - name: create ec2 instance
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      instance_type: t2.micro
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+      tags:
+        Name: "{{ item }}"
+    loop: "{{ instance }}"
+    register: ec2_output
+
+  # - name: print ec2 output
+  #   ansible.builtin.debug:
+  #     msg: "{{ ec2_output }}"
+
+  # - name: print public Ip address
+  #   ansible.builtin.debug:
+  #     msg: "{{ item.instances[0].public_ip_address}}"
+  #   loop: "{{ ec2_output.results }}"
+
+  # - name: print private Ip address
+  #   ansible.builtin.debug:
+  #     msg: "{{ item.instances[0].private_ip_address}}"
+  #   loop: "{{ ec2_output.results }}"
+
+  - name: create route53 records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ domain }}"
+      record: "{{ item.item }}.{{ domain }}"
+      type: A
+      ttl: 1
+      overwrite: True
+      value: "{{ item.instances[0].private_ip_address}}"
+    loop: "{{ ec2_output.results }}"
