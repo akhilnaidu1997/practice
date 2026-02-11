@@ -30,3 +30,11 @@
     ansible.builtin.debug:
       msg: "Map of items {{ Listtags | items2dict }}"
 
+  - name: Formatting data from YAML to JSON
+    ansible.builtin.set_fact:
+      app_output: "{{ lookup('file', 'app.yaml') | from_yaml }}"
+
+  - name: print output
+    ansible.builtin.debug:
+      msg: "app_output"
+

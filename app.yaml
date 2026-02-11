@@ -1,0 +1,22 @@
+# config.yaml - Simple YAML example
+
+app:
+  name: MyApplication
+  version: 1.0.0
+  debug: true
+
+database:
+  host: localhost
+  port: 5432
+  username: admin
+  password: secret123
+  name: my_database
+
+features:
+  - authentication
+  - logging
+  - analytics
+
+logging:
+  level: INFO
+  file: /var/log/myapp.log
