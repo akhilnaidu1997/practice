@@ -38,3 +38,8 @@
     ansible.builtin.debug:
       msg: " {{ app_output | to_nice_json }}"
 
+  - name: copy content to a file
+    ansible.builtin.copy:
+      content: " {{ app_output | to_nice_json }}"
+      dest: ./newapp.json
+
