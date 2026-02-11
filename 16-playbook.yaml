@@ -34,7 +34,7 @@
     ansible.builtin.set_fact:
       app_output: "{{ lookup('file', 'app.yaml') | from_yaml }}"
 
-  - name: print output
+  - name: convert yaml to json
     ansible.builtin.debug:
-      msg: "{{ app_output }}"
+      msg: " {{ app_output | to_nice_json }}"
 
