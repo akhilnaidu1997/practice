@@ -5,6 +5,7 @@
   vars:
     Tech: DevOps, Linux, Shell, Ansible
     Name: "akhil pathik"
+    ipaddress: 172.989.23.176
     tags:
       Application: payment
       Environment: dev
@@ -51,4 +52,8 @@
   - name: convert to lowercase 
     ansible.builtin.debug:
       msg: "{{ Tech | lower }}"
+
+  - name: valid ip or not 
+    ansible.builtin.debug:
+      msg: "{{ ipaddress | ansible.utils.ipv4 }}"
 
