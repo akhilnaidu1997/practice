@@ -4,6 +4,7 @@
   become: yes
   vars:
     Tech: DevOps, Linux, Shell, Ansible
+    Name: akhil pathik
     tags:
       Application: payment
       Environment: dev
@@ -45,5 +46,5 @@
 
   - name: convert to uppercase
     ansible.builtin.debug:
-      msg: "{{ Tech | uppercase }}"
+      msg: "{{ Name | uppercase }}"
 
