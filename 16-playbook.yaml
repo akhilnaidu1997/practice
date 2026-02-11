@@ -48,3 +48,7 @@
     ansible.builtin.debug:
       msg: "{{ Name | upper }}"
 
+  - name: convert to lowercase 
+    ansible.builtin.debug:
+      msg: "{{ Tech | lower }}"
+
