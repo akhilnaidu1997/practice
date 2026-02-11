@@ -3,9 +3,7 @@
   become: yes
   tasks:
   - name: disbale default nodejs
-    ansible.builtin.command: dnf module disable redis -y
+    ansible.builtin.dnf: module disable redis -y
 
   - name: enable nodejs
     ansible.builtin.command: dnf module enable redis:7 -y
-
-  - name: 
