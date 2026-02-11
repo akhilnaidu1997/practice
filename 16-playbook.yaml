@@ -4,6 +4,9 @@
   become: yes
   vars:
     Tech: DevOps, Linux, Shell, Ansible
+    tags:
+      Application: payment
+      Environment: dev
   tasks:
   - name: default variable
     ansible.builtin.debug:
@@ -12,3 +15,9 @@
   - name: convert string to list
     ansible.builtin.debug:
       msg: "Technologies are {{ Tech | split(',') }}"
+
+# Here map and dictionary both are same
+  - name: convert Dictionaries into List
+    ansible.builtin.debug:
+      msg: "List {{ tags | dict2items }}"
+
