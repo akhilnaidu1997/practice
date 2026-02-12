@@ -10,3 +10,33 @@
     - python3
     - gcc
     - python3-devel
+
+  - name: add system user
+    ansible.builtin.user:
+      name: roboshop
+      shell: /sbin/nologin
+      home: /app
+      system: true
+      comment: "roboshop system user"
+
+  - name: delete app dir
+    ansible.builtin.file:
+      path: /app
+      state: absent
+
+  - name: create app dir
+    ansible.builtin.file:
+      path: /app
+      state: directory
+
+  - name: Delete payment.zip
+    ansible.builtin.file:
+      path: /tmp/payment.zip
+      state: absent
+
+  - name: Download shipping code
+    ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
+      dest: /tmp/payment.zip
+
+  
