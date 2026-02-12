@@ -20,3 +20,9 @@
 
 - name: load data
   ansible.builtin.shell: mongosh --host mongodb.daws86s-akhil.shop </app/db/master-data.js
+
+- name: import systemd service
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: systemd.yaml
+    
