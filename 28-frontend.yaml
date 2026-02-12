@@ -22,4 +22,15 @@
   - name: remove default content
     ansible.builtin.command: rm -rf /usr/share/nginx/html/* 
 
-  - name: 
+  - name: Download frontend code
+    ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
+      dest: /tmp/frontend.zip
+
+  - name: unzip frontend
+    ansible.builtin.unarchive:
+      src: /tmp/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+
+  
