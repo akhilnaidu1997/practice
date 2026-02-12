@@ -62,7 +62,7 @@
 
   - name: start and enable service
     ansible.builtin.service:
-      name: user
+      name: cart
       state: started
       enabled: yes
   

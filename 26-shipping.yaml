@@ -46,3 +46,23 @@
 
   - name: move jar file
     ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
+
+  - name: copy service file
+    ansible.builtin.copy:
+      src: shipping.service
+      dest: /etc/systemd/system/
+
+  - name: daemon reload
+    ansible.builtin.systemd:
+      daemon_reload: yes
+
+  - name: start and enable service
+    ansible.builtin.service:
+      name: user
+      state: started
+      enabled: yes
+
+  - name: install mysql
+    ansible.builtin.package:
+      name: mysql
+      state: installed
