@@ -65,9 +65,9 @@
       enabled: yes
 
   - name: install mysql
-    ansible.builtin.package:
+    ansible.builtin.dnf:
       name: mysql
-      state: installed
+      state: present
 
   - name: import data into mysql 
     community.mysql.mysql_db:
