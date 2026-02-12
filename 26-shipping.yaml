@@ -23,7 +23,7 @@
   - name: create app dir
     ansible.builtin.file:
       path: /app
-      state: present
+      state: directory
 
   - name: Delete shipping.zip
     ansible.builtin.file:
