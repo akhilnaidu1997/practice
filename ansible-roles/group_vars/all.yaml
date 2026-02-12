@@ -1,0 +1,5 @@
+MONGODB_HOST: mongodb.daws86s-akhil.shop
+REDIS_HOST: redis.daws86s-akhil.shop
+MYSQL_HOST: mysql.daws86s-akhil.shop
+RABBITMQ_HOST: rabbitmq.daws86s-akhil.shop
+CATALOGUE_HOST: catalogue.daws86s-akhil.shop
