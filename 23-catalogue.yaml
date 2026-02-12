@@ -39,7 +39,7 @@
   - name: create app dir
     ansible.builtin.file:
       path: /app
-      state: present
+      state: directory
 
   - name: Delete catalogue.zip
     ansible.builtin.file:
