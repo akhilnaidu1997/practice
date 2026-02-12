@@ -1,5 +1,5 @@
 - name: setup cart
-  host: cart
+  hosts: cart
   become: yes
   tasks:
   - name: disable nodejs
@@ -29,7 +29,7 @@
   - name: create app dir
     ansible.builtin.file:
       path: /app
-      state: present
+      state: directory
 
   - name: Delete cart.zip
     ansible.builtin.file:
@@ -45,6 +45,7 @@
     ansible.builtin.unarchive:
       src: /tmp/cart.zip
       dest: /app
+      remote_src: yes
 
   - name: Install packages based on package.json.
     community.general.npm:
