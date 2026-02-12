@@ -1,0 +1,100 @@
+- name: setup catalogue
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: disable nodejs
+    ansible.builtin.command: dnf module disable nodejs -y
+
+  - name: enable nodejs
+    ansible.builtin.command: dnf module enable nodejs:20 -y
+
+  - name: install nodejs
+    ansible.builtin.package:
+      name: nodejs
+      state: installed
+  
+  - name: check if user exists or not
+    ansible.builtin.command: id roboshop
+    ignore_errors: yes
+    register: user_output
+
+  - name: print output
+    ansible.builtin.debug:
+      msg: "{{ user_output }}"
+
+  - name: add system user
+    ansible.builtin.user:
+      name: roboshop
+      shell: /sbin/nologin
+      home: /app
+      system: true
+      comment: "roboshop system user"
+    when: user_output.rc != 0
+  
+  - name: delete app dir
+    ansible.builtin.file:
+      path: /app
+      state: absent
+
+  - name: create app dir
+    ansible.builtin.file:
+      path: /app
+      state: present
+
+  - name: Delete catalogue.zip
+    ansible.builtin.file:
+      path: /tmp/catalogue.zip
+      state: absent
+
+  - name: Download catalogue code
+    ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+      dest: /tmp/catalogue.zip
+  
+  - name: unzip catalogue
+    ansible.builtin.unarchive:
+      src: /tmp/catalogue.zip
+      dest: /app
+
+  - name: Install packages based on package.json.
+    community.general.npm:
+      path: /app
+
+  - name: copy service file
+    ansible.builtin.copy:
+      src: catalogue.service
+      dest: /etc/systemd/system/
+
+  - name: start and enable service
+    ansible.builtin.service:
+      name: catalogue
+      state: started
+      enabled: yes
+
+  - name: copy mongo.repo file
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/
+
+  - name: install mongodb client
+    ansible.builtin.package:
+      name: mongodb-mongosh
+      state: installed
+
+  - name: load data
+    ansible.builtin.shell: mongosh --host mongodb.daws86s-akhil.shop </app/db/master-data.js
+
+  - name: relaod, enable and start service 
+    ansible.builtin.systemd_service:
+      name: catalogue
+      state: restarted
+      daemon_reload: true
+      enabled: true
+
+
+  
+      
+
+
+
+  
