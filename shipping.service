@@ -7,7 +7,7 @@ User=roboshop
 Environment=CART_ENDPOINT=cart.daws86s-akhil.shop:8080
 Environment=DB_HOST=mysql.daws86s-akhil.shop
 // highlight-end
-ExecStart=/bin/java -jar /app/shipping.jar
+ExecStart=/bin/java -jar /app/shipping*.jar*
 SyslogIdentifier=shipping
 
 [Install]
