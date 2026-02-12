@@ -1,0 +1,22 @@
+- name: app setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: appsetup.yaml
+
+- name: nodejs setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs.yaml
+
+- name: copy mongo.repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/
+
+- name: install mongodb client
+  ansible.builtin.package:
+    name: mongodb-mongosh
+    state: installed
+
+- name: load data
+  ansible.builtin.shell: mongosh --host mongodb.daws86s-akhil.shop </app/db/master-data.js
