@@ -66,3 +66,21 @@
     ansible.builtin.package:
       name: mysql
       state: installed
+
+  - name: import data into mysql 
+    community.mysql.mysql_db:
+      state: import
+      name: all
+      login_host: mysql.daws86s-akhil.shop
+      login_user: root
+      login_password: RoboShop@1
+      target: "{{ item }}"
+    loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql 
+    - /app/db/master-data.sql
+
+  - name: restart shipping
+    ansible.builtin.service:
+      name: shipping
+      state: restarted
