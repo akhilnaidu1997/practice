@@ -66,8 +66,13 @@
 
   - name: install mysql
     ansible.builtin.dnf:
-      name: mysql
+      name: "{{ item }}"
       state: present
+    loop:
+    - mysql
+    - PyMySQL
+
+  
 
   - name: import data into mysql 
     community.mysql.mysql_db:
