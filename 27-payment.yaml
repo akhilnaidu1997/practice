@@ -45,6 +45,13 @@
       dest: /app
       remote_src: yes
 
+  - name: Install specified python requirements
+    ansible.builtin.pip:
+      requirements: /app/requirements.txt
+
+  
+
+
   
 
   
