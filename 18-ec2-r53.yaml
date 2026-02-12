@@ -6,17 +6,17 @@
     sg_id: sg-084659653bcf2b298
     zone_id: Z06190873R7XMZC2PKDSV
     domain: daws86s-akhil.shop
-    instances:
-    - mongodb
-    - redis
-    - mysql
-    - rabbitmq
-    - catalogue
-    - user
-    - cart
-    - shipping
-    - payment
-    - frontend
+    # instances:
+    # - mongodb
+    # - redis
+    # - mysql
+    # - rabbitmq
+    # - catalogue
+    # - user
+    # - cart
+    # - shipping
+    # - payment
+    # - frontend
   tasks:
   - name: create ec2 user
     amazon.aws.ec2_instance:
