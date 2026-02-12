@@ -33,4 +33,14 @@
       dest: /usr/share/nginx/html
       remote_src: yes
 
+  - name: copy config file
+    ansible.builtin.copy:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+
+  - name: restart
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
+
   
