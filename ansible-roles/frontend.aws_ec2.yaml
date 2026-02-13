@@ -3,10 +3,12 @@ regions:
 - us-east-1
 filters:
   tag:Name: frontend
+  instance-state-name : running
 keyed_groups:
 - key: tags.Name
   prefix: dynamic
+  seperator: "_"
 hostnames:
-- public_ip_address
+- private_ip_address
 compose:
-  ansible_host: public_ip_address
+  ansible_host: private_ip_address
