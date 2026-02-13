@@ -3,3 +3,7 @@ REDIS_HOST: redis.daws86s-akhil.shop
 MYSQL_HOST: mysql.daws86s-akhil.shop
 RABBITMQ_HOST: rabbitmq.daws86s-akhil.shop
 CATALOGUE_HOST: catalogue.daws86s-akhil.shop
+CART_HOST: cart.daws86s-akhil.shop
+USER_HOST: user.daws86s-akhil.shop
+SHIPPING_HOST: shipping.daws86s-akhil.shop
+PAYMENT_HOST: payment.daws86s-akhil.shop
