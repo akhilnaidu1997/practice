@@ -1,10 +1,10 @@
 - name: app setup
   ansible.builtin.import_role:
-    name: comman
+    name: common
     tasks_from: appsetup.yaml
 
 - name: python
   ansible.builtin.import_role:
-    name: comman
+    name: common
     tasks_from: python.yaml
 
