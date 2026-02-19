@@ -1,0 +1,1 @@
+echo "Trying without shebang"
