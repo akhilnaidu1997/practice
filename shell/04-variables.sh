@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash #here we are using bash shell, shebang tells OS which interpreter/shell to be used during execution
 
 PERSON1=$1
 PERSON2=$2
