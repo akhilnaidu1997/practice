@@ -7,3 +7,6 @@ COURSE="DevSecOps"
 DURATION=120
 
 echo "Course name: ${COURSE} and duration is ${DURATION}"
+
+NAME=("MODI" "PUTIN" "TRUMP" "MACRON")
+echo "print name of first in the list :$NAME[0]"
