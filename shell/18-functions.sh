@@ -10,16 +10,26 @@ fi
 VALIDATE() {
     if [ $1 -ne 0 ]; then
         echo "$2 installation is failed"
+        exit 1
     else
         echo "$2 installation is success"
     fi
 }
 
-dnf install mysql -y 
-VALIDATE $? mysql
+dnf list installed mysql
+if [ $? -ne 0 ]; then
+    dnf install mysql -y 
+    VALIDATE $? mysql
+fi
 
-dnf install nginx -y
-VALIDATE $? nginx
+dnf list installed nginx
+if [ $? -ne 0 ]; then
+    dnf install nginx -y 
+    VALIDATE $? nginx
+fi
 
-dnf install python -y
-VALIDATE $? python
+dnf list installed python
+if [ $? -ne 0 ]; then
+    dnf install python -y 
+    VALIDATE $? python
+fi
