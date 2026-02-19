@@ -6,4 +6,4 @@ BLUE="\e[34m"
 RESET="\e[0m"
 
 echo -e "$RED Hello world, How are you $N"
-echo -e " Welcome to DevOps"
+echo -e "$BLUE Welcome to DevOps"
