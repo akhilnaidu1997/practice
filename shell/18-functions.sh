@@ -20,25 +20,25 @@ VALIDATE() {
     fi
 }
 
-dnf list installed mysql
+dnf list installed mysql >> /var/log/output.log
 if [ $? -ne 0 ]; then
-    dnf install mysql -y 
+    dnf install mysql -y  >> /var/log/output.log
     VALIDATE $? mysql
 else
     echo -e "$BLUE mysql is already installed $N"
 fi
 
-dnf list installed nginx
+dnf list installed nginx >> /var/log/output.log
 if [ $? -ne 0 ]; then
-    dnf install nginx -y 
+    dnf install nginx -y  >> /var/log/output.log
     VALIDATE $? nginx
 else
     echo -e "$BLUE nginx is already installed $N"
 fi
 
-dnf list installed python
+dnf list installed python >> /var/log/output.log
 if [ $? -ne 0 ]; then
-    dnf install python -y 
+    dnf install python -y  >> /var/log/output.log
     VALIDATE $? python
 else
     echo -e "$BLUE python is already installed $N"
