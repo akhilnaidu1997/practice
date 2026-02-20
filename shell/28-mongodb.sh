@@ -11,19 +11,25 @@ if [ $USER -ne 0 ]; then
     exit 1
 fi
 
+LOG_FOLDER="/var/log/shell-script"
+SCRIPT=$( echo $0 | cut -d "." -f1)
+LOG_FILE="$LOG_FOLDER/$SCRIPT.log"
+
+mkdir -p $LOG_FOLDER
+
 VALIDATE() {
     if [ $1 -ne 0 ]; then
-        echo -e "$RED $2  is failed $N"
+        echo -e "$RED $2  is failed $N" | tee -a $LOG_FILE
         exit 1
     else
-        echo -e "$GREEN $2  is success $N"
+        echo -e "$GREEN $2  is success $N" | tee -a $LOG_FILE
     fi
 }
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "file copied to desired location"
 
-dnf install mongodb-org -y 
+dnf install mongodb-org -y &>> $LOG_FILE
 VALIDATE $? "mongodb-org"
 
 systemctl enable mongod 
