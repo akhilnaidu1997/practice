@@ -9,7 +9,7 @@ for PACKAGE in $@
 do
     Instance_ID=$(aws ec2 run-instances --image-id ami-0220d79f3f480ecf5 --count 1  --instance-type t2.micro --security-group-ids $SG_ID --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value='$PACKAGE'}]' --query "Instances[0].InstanceId" --output text)
 
-    if [ "$PACKAGE" -ne "frontend" ]; then
+    if [ "$PACKAGE" != "frontend" ]; then
         IP=$(aws ec2 describe-instances --instance-ids $Instance_ID --query "Reservations[0].Instances[0].PrivateIpAddress" --output text)
         RECORD_NAME="$PACKAGE.$DOMAIN_NAME"
     else
