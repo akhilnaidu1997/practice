@@ -23,6 +23,7 @@ VALIDATE(){
         exit 1
     else
         echo "$BLUE $2 is installed $N" | tee -a $LOG_FILE
+    fi
 }
 
 dnf list installed nginx -y $>> $LOG_FILE
