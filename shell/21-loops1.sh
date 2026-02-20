@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-for num in {1,2...6}
+for num in {1,2,3,4,5,6}
 do
     echo "Print $num"
 done
