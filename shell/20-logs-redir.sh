@@ -12,7 +12,7 @@ if [ $USER -ne 0 ]; then
 fi
 
 LOG_FOLDER="/var/log/shell-script"
-SCRIPT=$( echo $0 | cut -d "." -f)
+SCRIPT=$( echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT.log"
 
 mkdir -p $LOG_FOLDER # if folder exists then it wont create and wont throw error, if not available then it creates.
