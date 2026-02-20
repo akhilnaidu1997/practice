@@ -43,7 +43,7 @@ else
     echo "roboshop user is already created"
 fi
 
-mkdir /app 
+mkdir -p /app 
 VALIDATE $? "/app"
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
