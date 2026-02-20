@@ -49,7 +49,7 @@ VALIDATE $? "unzip"
 npm install
 VALIDATE $? "install dependencies"
 
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp ./catalogue.service /etc/systemd/system/catalogue.service
 VALIDATE $? "copy service file"
 
 systemctl daemon-reload
