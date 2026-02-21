@@ -13,8 +13,8 @@ LOG_FILE="$LOG_FOLDER/$SCRIPT.log"
 
 mkdir -p $LOG_FOLDER
 
-SOURCE_DIR=$1
-DEST_DIR=$2
+SOURCE_DIR=/home/ec2-user/source_dir
+DEST_DIR=/home/ec2-user/dest_dir
 
 USAGE(){
     echo "USAGE:: sh backupscript.sh <SOURCE> <DEST> <DAYS>(optional)"
