@@ -10,6 +10,6 @@ do
     if [ $DISK_USAGE -ge $DISK_THRESHOLD ]; then
         MESSAGE+="High disk usage on $PARTITION: $DISK_USAGE"
     fi
-done <<<$DISK_USAGE
+done <<< $DISK_USAGE
 
 echo "Message Body: $MESSAGE"
