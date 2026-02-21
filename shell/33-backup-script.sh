@@ -39,4 +39,18 @@ FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +14 )
 
 if [ ! -z "$FILES" ]; then
     echo "files exists: $FILES"
+    TIMESTAMP=$(date +%F-%H-%M)
+    ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
+    find $SOURCE_DIR -name "*.log" -type f -mtime +14 | zip -@ -j "$ZIP_FILE"
+    if [ $? -eq 0 ]; then
+        while IFS= read -r filepath
+        do
+            echo "print file name: $filepath"
+            rm -rf $filepath
+        done <<< $FILES
+    else
+        echo "Archival failed"
+    fi
+else
+    echo "No files found to zip"
 fi
