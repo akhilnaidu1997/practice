@@ -27,13 +27,13 @@ VALIDATE() {
     fi
 }
 
-dnf module disable nodejs -y
+dnf module disable nodejs -y &>> $LOG_FILE
 VALIDATE $? "disabled"
 
-dnf module enable nodejs:20 -y
+dnf module enable nodejs:20 -y &>> $LOG_FILE
 VALIDATE $? "enabled"
 
-dnf install nodejs -y
+dnf install nodejs -y &>> $LOG_FILE
 VALIDATE $? "nodejs"
 
 id roboshop
@@ -41,7 +41,7 @@ if [ $? -ne 0 ]; then
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
     VALIDATE $? "user created"
 else
-    echo "roboshop user is already created"
+    echo "roboshop user is already created" | tee -a $LOG_FILE
 fi
 
 mkdir -p /app 
@@ -52,7 +52,7 @@ cd /app
 unzip -o /tmp/catalogue.zip
 VALIDATE $? "unzip"
 
-npm install
+npm install &>> $LOG_FILE
 VALIDATE $? "install dependencies"
 
 cp $DIR/catalogue.service /etc/systemd/system/catalogue.service
@@ -62,9 +62,12 @@ systemctl daemon-reload
 
 systemctl enable catalogue 
 systemctl start catalogue
+VALIDATE $? "start and enable service"
 
 cp $DIR/mongo.repo /etc/yum.repos.d/mongo.repo
+VALIDATE $? "mongo.repo copied"
 
-dnf install mongodb-mongosh -y
+dnf install mongodb-mongosh -y &>> $LOG_FILE
+VALIDATE $? "installed mongo client"
 
 mongosh --host mongodb.daws86s-akhil.shop </app/db/master-data.js
