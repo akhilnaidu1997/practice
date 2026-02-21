@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RAM_USAGE=$(free -m | awk '/Mem:/ {printf("%.2f%\n", $3/$2*100)}')
+RAM_USAGE=$(free -m | awk '/Mem:/ {printf("%.2f\n", $3/$2*100)}')
 RAM_THRESHOLD=20
 MESSAGE=""
 
