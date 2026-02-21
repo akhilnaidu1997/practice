@@ -8,4 +8,4 @@ if [ $RAM_USAGE -ge $RAM_THRESHOLD ]; then
     MESSAGE="High RAM usage: $RAM_USAGE"
 fi
 
-echo "Message body: $MESSAGE"
+echo "$MESSAGE"
