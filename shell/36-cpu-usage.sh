@@ -1,5 +1,5 @@
 #!/bin/bash
-
-CPU_IDLE=$(mpstat 1 1 | awk '/Average/ {print $NF}')
-CPU_USAGE=$(awk "BEGIN {print 100 - $CPU_IDLE}")
-printf "CPU Usage: %.2f%%\n" "$CPU_USAGE"
+# Capture the second iteration of top for accurate idle time
+IDLE=$(top -b -n2 | grep "Cpu(s)" | tail -1 | awk '{print $8}')
+CPU_USAGE=$(echo "scale=2; 100 - $IDLE" | bc)
+echo "CPU Usage: $CPU_USAGE%"
