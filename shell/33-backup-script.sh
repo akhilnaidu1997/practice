@@ -37,6 +37,6 @@ fi
 
 FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +14 )
 
-if [ -z $FILES ]; then
+if [ -z "$FILES" ]; then
     echo "files exists: $FILES"
 fi
