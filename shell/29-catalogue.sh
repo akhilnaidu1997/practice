@@ -14,6 +14,7 @@ fi
 LOG_FOLDER="/var/log/shell-script"
 SCRIPT=$( echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT.log"
+DIR=$(PWD)
 
 mkdir -p $LOG_FOLDER
 
@@ -54,7 +55,7 @@ VALIDATE $? "unzip"
 npm install
 VALIDATE $? "install dependencies"
 
-cp ./catalogue.service /etc/systemd/system/catalogue.service
+cp $DIR/catalogue.service /etc/systemd/system/catalogue.service
 VALIDATE $? "copy service file"
 
 systemctl daemon-reload
