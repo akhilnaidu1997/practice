@@ -18,8 +18,20 @@ DEST_DIR=$2
 
 USAGE(){
     echo "USAGE:: sh backupscript.sh <SOURCE> <DEST> <DAYS>(optional)"
+    exit 1
 }
 
 if [ $# -lt 2 ]; then
     USAGE
 fi
+
+if [ ! -d $SOURCE_DIR ]; then
+    echo "ERROR:: Source $SOURCE_DIR doesnot exists"
+    exit 1
+fi
+
+if [ ! -d $DEST_DIR ]; then
+    echo "ERROR:: Destination $DEST_DIR doesnot exists"
+    exit 1
+fi
+
