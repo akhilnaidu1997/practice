@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 DISK_USAGE=$(df -h | grep -v Filesystem)
 DISK_THRESHOLD=2
 MESSAGE=""
