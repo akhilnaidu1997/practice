@@ -49,7 +49,7 @@ VALIDATE $? "/app"
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
 cd /app 
-unzip /tmp/catalogue.zip
+unzip -o /tmp/catalogue.zip
 VALIDATE $? "unzip"
 
 npm install
@@ -63,7 +63,7 @@ systemctl daemon-reload
 systemctl enable catalogue 
 systemctl start catalogue
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp $DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 
 dnf install mongodb-mongosh -y
 
