@@ -14,7 +14,7 @@ fi
 LOG_FOLDER="/var/log/shell-script"
 SCRIPT=$( echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT.log"
-DIR=$(PWD)
+DIR=$(pwd)
 
 mkdir -p $LOG_FOLDER
 
