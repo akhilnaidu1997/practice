@@ -5,7 +5,7 @@ RAM_THRESHOLD=20
 MESSAGE=""
 
 if [ $RAM_USAGE -ge $RAM_THRESHOLD ]; then
-    MESSAGE="High RAM usage: $RAM_USAGE"
+    MESSAGE="High RAM usage: $RAM_USAGE %"
 fi
 
 echo "$MESSAGE"
