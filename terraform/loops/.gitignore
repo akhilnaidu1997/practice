@@ -1,0 +1,10 @@
+# Ignore a specific file
+/text.txt
+# Ignore a specific directory
+/test/
+# Ignore all files with a specific name
+text.txt
+# Ignore all files with a specific extension
+*.md
+# Ignore all files and directories starting with a specific word
+img*
