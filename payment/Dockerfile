@@ -1,7 +1,7 @@
 FROM python:3.10.20
 WORKDIR /app
 COPY . .
-RUN dnf install python3 gcc -y && dnf install python3-devel -y
+RUN apt install python3 gcc -y && apt install python3-devel -y
 RUN pip3 install -r requirements.txt
 ENV CART_HOST=cart \
     CART_PORT=8080 \
