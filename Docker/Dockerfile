@@ -7,5 +7,5 @@ COPY . /usr/share/nginx/html/
 EXPOSE 80
 RUN useradd akhil
 USER akhil
-ENTRYPOINT ["nginx","-g","daemon off;"]
+CMD ["nginx","-g","daemon off;"]
 
