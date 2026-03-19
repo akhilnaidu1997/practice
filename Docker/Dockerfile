@@ -5,7 +5,5 @@ WORKDIR /app
 RUN dnf install nginx -y && rm -rf /usr/share/nginx/html/*
 COPY . /usr/share/nginx/html/
 EXPOSE 80
-RUN useradd akhil
-USER akhil
 CMD ["nginx","-g","daemon off;"]
 
