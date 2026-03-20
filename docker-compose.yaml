@@ -1,0 +1,29 @@
+services:
+  mongodb:
+    image: mongodb:v1
+    container_name: mongodb
+    volumes:
+      - mongodb:/data/db
+  mysql:
+    image: mysql:v1
+    container_name: mysql
+    volumes:
+      - mysql
+
+  redis:
+    image: redis:v1
+    container_name: redis
+    volumes:
+      - redis
+
+volumes:
+  mongodb:
+  mysql:
+  redis:
+  rabbitmq:
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false.
